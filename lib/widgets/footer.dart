@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/utils/colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../utils/constants.dart';
@@ -14,9 +13,137 @@ class Footer extends StatefulWidget {
 class _FooterState extends State<Footer> {
   @override
   Widget build(BuildContext context) {
+    List<Widget> navAboutList = [
+      Text(
+        "About Us",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "International",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "Sales",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "Site Map",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "Editorial Guidelines",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "News Board",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+    ];
+    List<Widget> footerTermsList = [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          "Terms & Conditions",
+          style:
+              TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          "Privacy & Cookies",
+          style:
+              TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          "Privacy Options",
+          style:
+              TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          "Accessibility",
+          style:
+              TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          "Contact Us",
+          style:
+              TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
+        ),
+      ),
+    ];
+
+    List<Widget> navServiceList = [
+      Text(
+        "News Feeds",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "On Your Phone",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "Radio",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+    ];
+
+    List<Widget> navChannelsList = [
+      Text(
+        "Art",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "Entertainment",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "Sports",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+    ];
+
+    List<Widget> navMoreList = [
+      Text(
+        "Studio",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "Emirates",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+      Text(
+        "Advertise With Us",
+        style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color, fontSize: 16),
+      ),
+    ];
     return Container(
       width: double.infinity,
-      color: AppColors.cards,
+      color: Theme.of(context).cardTheme.color,
       child: Center(
         child: Container(
           constraints: const BoxConstraints(maxWidth: 1000),
@@ -30,18 +157,21 @@ class _FooterState extends State<Footer> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    navAbout(),
-                    navService(),
-                    navChannels(),
-                    navMore(),
+                    navAbout(navAboutList),
+                    navService(navServiceList),
+                    navChannels(navChannelsList),
+                    navMore(navMoreList),
                   ],
                 ),
                 mobile: (p0) => Column(
                   children: [
                     ExpansionTile(
-                      title: const Text(
+                      title: Text(
                         "About Musab",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyMedium!.color,
+                            fontSize: 20),
                       ),
                       children: [
                         for (var data in navAboutList) data,
@@ -49,9 +179,12 @@ class _FooterState extends State<Footer> {
                     ),
                     footerDivider(),
                     ExpansionTile(
-                      title: const Text(
+                      title: Text(
                         "Services",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyMedium!.color,
+                            fontSize: 20),
                       ),
                       children: [
                         for (var data in navServiceList) data,
@@ -59,9 +192,12 @@ class _FooterState extends State<Footer> {
                     ),
                     footerDivider(),
                     ExpansionTile(
-                      title: const Text(
+                      title: Text(
                         "Channels",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyMedium!.color,
+                            fontSize: 20),
                       ),
                       children: [
                         for (var data in navChannelsList) data,
@@ -69,9 +205,12 @@ class _FooterState extends State<Footer> {
                     ),
                     footerDivider(),
                     ExpansionTile(
-                      title: const Text(
+                      title: Text(
                         "More Sites",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyMedium!.color,
+                            fontSize: 20),
                       ),
                       children: [
                         for (var data in navMoreList) data,
@@ -81,7 +220,7 @@ class _FooterState extends State<Footer> {
                 ),
               ),
               footerDivider(),
-              footerTerms(),
+              footerTerms(footerTermsList),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 18),
@@ -95,9 +234,10 @@ class _FooterState extends State<Footer> {
                               image: NetworkImage(
                                   "https://picsum.photos/id/20/110/60"))),
                     ),
-                    const Text(
+                    Text(
                       "© 2023 Musab",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium!.color),
                     )
                   ],
                 ),
@@ -117,44 +257,7 @@ class _FooterState extends State<Footer> {
     );
   }
 
-  List<Widget> footerTermsList = [
-    const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text(
-        "Terms & Conditions",
-        style: TextStyle(color: Colors.white),
-      ),
-    ),
-    const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text(
-        "Privacy & Cookies",
-        style: TextStyle(color: Colors.white),
-      ),
-    ),
-    const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text(
-        "Privacy Options",
-        style: TextStyle(color: Colors.white),
-      ),
-    ),
-    const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text(
-        "Accessibility",
-        style: TextStyle(color: Colors.white),
-      ),
-    ),
-    const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text(
-        "Contact Us",
-        style: TextStyle(color: Colors.white),
-      ),
-    ),
-  ];
-  Widget footerTerms() {
+  Widget footerTerms(footerTermsList) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 18),
       child: ScreenTypeLayout.builder(
@@ -173,40 +276,15 @@ class _FooterState extends State<Footer> {
     );
   }
 
-  List<Widget> navAboutList = [
-    const Text(
-      "About Us",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "International",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "Sales",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "Site Map",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "Editorial Guidelines",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "News Board",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-  ];
-
-  Widget navAbout() {
+  Widget navAbout(navAboutList) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "About Musab",
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+              fontSize: 20),
         ),
         const SizedBox(
           height: 10,
@@ -216,27 +294,15 @@ class _FooterState extends State<Footer> {
     );
   }
 
-  List<Widget> navServiceList = [
-    const Text(
-      "News Feeds",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "On Your Phone",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "Radio",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-  ];
-  Widget navService() {
+  Widget navService(navServiceList) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Services",
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+              fontSize: 20),
         ),
         const SizedBox(
           height: 10,
@@ -246,27 +312,15 @@ class _FooterState extends State<Footer> {
     );
   }
 
-  List<Widget> navChannelsList = [
-    const Text(
-      "Art",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "Entertainment",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "Sports",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-  ];
-  Widget navChannels() {
+  Widget navChannels(navChannelsList) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Channels",
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+              fontSize: 20),
         ),
         const SizedBox(
           height: 10,
@@ -276,27 +330,15 @@ class _FooterState extends State<Footer> {
     );
   }
 
-  List<Widget> navMoreList = [
-    const Text(
-      "Studio",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "Emirates",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const Text(
-      "Advertise With Us",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-  ];
-  Widget navMore() {
+  Widget navMore(navMoreList) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "More Sites",
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+              fontSize: 20),
         ),
         const SizedBox(
           height: 10,
@@ -315,19 +357,20 @@ class _FooterState extends State<Footer> {
             onTap: () {},
             child: Row(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Icon(
                     Icons.facebook,
-                    color: Colors.white,
+                    color: Theme.of(context).textTheme.bodyMedium!.color,
                   ),
                 ),
                 ResponsiveBuilder(builder: (context, sizingInformation) {
                   if (sizingInformation.deviceScreenType !=
                       DeviceScreenType.mobile) {
-                    return const Text(
+                    return Text(
                       'Facebook',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium!.color),
                     );
                   }
                   return Container();
@@ -339,19 +382,20 @@ class _FooterState extends State<Footer> {
             onTap: () {},
             child: Row(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Icon(
                     Icons.facebook,
-                    color: Colors.white,
+                    color: Theme.of(context).textTheme.bodyMedium!.color,
                   ),
                 ),
                 ResponsiveBuilder(builder: (context, sizingInformation) {
                   if (sizingInformation.deviceScreenType !=
                       DeviceScreenType.mobile) {
-                    return const Text(
+                    return Text(
                       'Twitter',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium!.color),
                     );
                   }
                   return Container();
