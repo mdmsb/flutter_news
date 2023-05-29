@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/utils/colors.dart';
 import 'package:flutter_news/widgets/navbar.dart';
 import 'package:flutter_news/widgets/section_mostread.dart';
 
@@ -22,8 +21,8 @@ class Home extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           // decoration: BoxDecoration(color: AppColors.background),
-          child: Column(
-            children: const [
+          child: const Column(
+            children: [
               NavBar(),
               TopStories(),
               Footer(),
@@ -53,9 +52,11 @@ class TopStories extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 10),
-                  Text(
+                  const Text(
                     'Top Stories',
-                    style: TextStyle(fontSize: 33, color: AppColors.text),
+                    style: TextStyle(
+                      fontSize: 33,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   const CardMain(),
@@ -66,7 +67,9 @@ class TopStories extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     'Videos',
-                    style: TextStyle(fontSize: 33, color: AppColors.text),
+                    style: TextStyle(
+                        fontSize: 33,
+                        color: Theme.of(context).textTheme.bodyMedium!.color),
                   ),
                   const SizedBox(height: 10),
                   const SectionVideo(
@@ -74,7 +77,9 @@ class TopStories extends StatelessWidget {
                   ),
                   Text(
                     'Features',
-                    style: TextStyle(fontSize: 33, color: AppColors.text),
+                    style: TextStyle(
+                        fontSize: 33,
+                        color: Theme.of(context).textTheme.bodyMedium!.color),
                   ),
                   const SizedBox(height: 10),
                   const SectionFeatures(
@@ -82,7 +87,9 @@ class TopStories extends StatelessWidget {
                   ),
                   Text(
                     'Analysis',
-                    style: TextStyle(fontSize: 33, color: AppColors.text),
+                    style: TextStyle(
+                        fontSize: 33,
+                        color: Theme.of(context).textTheme.bodyMedium!.color),
                   ),
                   const SizedBox(height: 10),
                   const SectionAnalysis(
@@ -102,7 +109,9 @@ class TopStories extends StatelessWidget {
                   ),
                   Text(
                     'Most Read',
-                    style: TextStyle(fontSize: 33, color: AppColors.text),
+                    style: TextStyle(
+                        fontSize: 33,
+                        color: Theme.of(context).textTheme.bodyMedium!.color),
                   ),
                   const SizedBox(height: 10),
                   const SectionMostRead(),

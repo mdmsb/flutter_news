@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/utils/colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../utils/constants.dart';
@@ -53,32 +52,34 @@ class _SectionSecondState extends State<SectionSecond> {
                   return Container(
                     margin: const EdgeInsets.only(bottom: 10),
                     width: (parentWidth / 3) - 6.8,
-                    decoration: BoxDecoration(color: AppColors.cards),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Column(
-                        children: [
-                          ClipRect(
-                            clipBehavior: Clip.hardEdge,
-                            child: AnimatedScale(
-                              scale: _scaleImageList[index],
-                              duration: const Duration(milliseconds: 300),
-                              child: Container(
-                                height: 200,
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                        "https://picsum.photos/id/52/500/300"),
+                    // decoration: BoxDecoration(color: AppColors.cards),
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Column(
+                          children: [
+                            ClipRect(
+                              clipBehavior: Clip.hardEdge,
+                              child: AnimatedScale(
+                                scale: _scaleImageList[index],
+                                duration: const Duration(milliseconds: 300),
+                                child: Container(
+                                  height: 200,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                          "https://picsum.photos/id/52/500/300"),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            child: textBox(18),
-                          ),
-                        ],
+                            SizedBox(
+                              child: textBox(18, context),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -89,49 +90,53 @@ class _SectionSecondState extends State<SectionSecond> {
                   return Container(
                     margin: const EdgeInsets.only(bottom: 10),
                     width: (parentWidth / 2) - 5,
-                    decoration: BoxDecoration(color: AppColors.cards),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Column(
-                        children: [
-                          ClipRect(
-                            clipBehavior: Clip.hardEdge,
-                            child: AnimatedScale(
-                              scale: _scaleImageList[index],
-                              duration: const Duration(milliseconds: 300),
-                              child: Container(
-                                height: 200,
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                        "https://picsum.photos/id/52/500/300"),
+                    // decoration: BoxDecoration(color: AppColors.cards),
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Column(
+                          children: [
+                            ClipRect(
+                              clipBehavior: Clip.hardEdge,
+                              child: AnimatedScale(
+                                scale: _scaleImageList[index],
+                                duration: const Duration(milliseconds: 300),
+                                child: Container(
+                                  height: 200,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                          "https://picsum.photos/id/52/500/300"),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            child: textBox(17),
-                          ),
-                        ],
+                            SizedBox(
+                              child: textBox(17, context),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
                 }),
                 mobile: (p0) => Container(
                   margin: const EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(color: AppColors.cards),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                            width: 100,
-                            child: imageBoxSmall(_scaleImageList[index])),
-                        Expanded(child: textBox(15)),
-                      ],
+                  // decoration: BoxDecoration(color: AppColors.cards),
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                              width: 100,
+                              child: imageBoxSmall(_scaleImageList[index])),
+                          Expanded(child: textBox(15, context)),
+                        ],
+                      ),
                     ),
                   ),
                 ),

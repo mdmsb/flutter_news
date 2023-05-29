@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/colors.dart';
-
-Widget textBox(size) {
+Widget textBox(size, context) {
   return Padding(
     padding: const EdgeInsets.all(28.0),
     child: Column(
@@ -22,8 +20,10 @@ Widget textBox(size) {
         SizedBox(
           child: Text(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius ante ac dui lobortis lacinia. Fusce libero nibh.",
-            style:
-                TextStyle(color: AppColors.text, fontSize: size, height: 1.5),
+            style: TextStyle(
+                color: Theme.of(context).textTheme.bodyMedium!.color,
+                fontSize: size,
+                height: 1.5),
           ),
         ),
       ],

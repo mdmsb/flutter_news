@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/utils/colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../utils/constants.dart';
@@ -58,54 +57,19 @@ class _SectionFeaturesState extends State<SectionFeatures> {
 
   Widget mobileMainCard(index) {
     return Container(
-      decoration: BoxDecoration(color: AppColors.cards),
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Column(
-          children: [
-            ClipRect(
-              clipBehavior: Clip.hardEdge,
-              child: AnimatedScale(
-                scale: _scaleImageList[index],
-                duration: const Duration(milliseconds: 300),
-                child: Container(
-                  height: 200,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image:
-                          NetworkImage("https://picsum.photos/id/52/500/300"),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              child: textBox(20),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget desktopMainCard(index) {
-    return Container(
-      decoration: BoxDecoration(color: AppColors.cards),
-      margin: const EdgeInsets.only(bottom: 10),
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 4,
-              child: ClipRect(
+      // decoration: BoxDecoration(color: AppColors.cards),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Column(
+            children: [
+              ClipRect(
                 clipBehavior: Clip.hardEdge,
                 child: AnimatedScale(
                   scale: _scaleImageList[index],
                   duration: const Duration(milliseconds: 300),
                   child: Container(
-                    height: 250,
+                    height: 200,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -116,15 +80,54 @@ class _SectionFeaturesState extends State<SectionFeatures> {
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 6,
-              child: SizedBox(
-                height: 250,
-                child: textBox(22),
+              SizedBox(
+                child: textBox(20, context),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget desktopMainCard(index) {
+    return Container(
+      // decoration: BoxDecoration(color: AppColors.cards),
+      margin: const EdgeInsets.only(bottom: 10),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 4,
+                child: ClipRect(
+                  clipBehavior: Clip.hardEdge,
+                  child: AnimatedScale(
+                    scale: _scaleImageList[index],
+                    duration: const Duration(milliseconds: 300),
+                    child: Container(
+                      height: 250,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                              "https://picsum.photos/id/52/500/300"),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                flex: 6,
+                child: SizedBox(
+                  height: 250,
+                  child: textBox(22, context),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

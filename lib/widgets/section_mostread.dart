@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news/utils/constants.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import '../utils/colors.dart';
-
 class SectionMostRead extends StatefulWidget {
   const SectionMostRead({super.key});
 
@@ -14,74 +12,76 @@ class SectionMostRead extends StatefulWidget {
 class _SectionMostReadState extends State<SectionMostRead> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      decoration: BoxDecoration(color: AppColors.cards),
-      width: double.infinity,
-      child: ScreenTypeLayout.builder(
-        breakpoints: screenBreaks,
-        tablet: (context) => Row(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  topTrend("1", lorem),
-                  rightDivider(),
-                  topTrend("2", lorem),
-                  rightDivider(),
-                  topTrend("3", lorem),
-                  rightDivider(),
-                  topTrend("4", lorem),
-                  rightDivider(),
-                  topTrend("5", lorem),
-                ],
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        // decoration: BoxDecoration(color: AppColors.cards),
+        width: double.infinity,
+        child: ScreenTypeLayout.builder(
+          breakpoints: screenBreaks,
+          tablet: (context) => Row(
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                    topTrend("1", lorem),
+                    rightDivider(),
+                    topTrend("2", lorem),
+                    rightDivider(),
+                    topTrend("3", lorem),
+                    rightDivider(),
+                    topTrend("4", lorem),
+                    rightDivider(),
+                    topTrend("5", lorem),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  topTrend("6", lorem),
-                  leftDivider(),
-                  topTrend("7", lorem),
-                  leftDivider(),
-                  topTrend("8", lorem),
-                  leftDivider(),
-                  topTrend("9", lorem),
-                  leftDivider(),
-                  topTrend("10", lorem),
-                ],
+              Expanded(
+                child: Column(
+                  children: [
+                    topTrend("6", lorem),
+                    leftDivider(),
+                    topTrend("7", lorem),
+                    leftDivider(),
+                    topTrend("8", lorem),
+                    leftDivider(),
+                    topTrend("9", lorem),
+                    leftDivider(),
+                    topTrend("10", lorem),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-        mobile: (context) => Row(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  topTrend("1", lorem),
-                  myDivider(),
-                  topTrend("2", lorem),
-                  myDivider(),
-                  topTrend("3", lorem),
-                  myDivider(),
-                  topTrend("4", lorem),
-                  myDivider(),
-                  topTrend("5", lorem),
-                  myDivider(),
-                  topTrend("6", lorem),
-                  myDivider(),
-                  topTrend("7", lorem),
-                  myDivider(),
-                  topTrend("8", lorem),
-                  myDivider(),
-                  topTrend("9", lorem),
-                  myDivider(),
-                  topTrend("10", lorem),
-                ],
+            ],
+          ),
+          mobile: (context) => Row(
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                    topTrend("1", lorem),
+                    myDivider(),
+                    topTrend("2", lorem),
+                    myDivider(),
+                    topTrend("3", lorem),
+                    myDivider(),
+                    topTrend("4", lorem),
+                    myDivider(),
+                    topTrend("5", lorem),
+                    myDivider(),
+                    topTrend("6", lorem),
+                    myDivider(),
+                    topTrend("7", lorem),
+                    myDivider(),
+                    topTrend("8", lorem),
+                    myDivider(),
+                    topTrend("9", lorem),
+                    myDivider(),
+                    topTrend("10", lorem),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -131,7 +131,8 @@ class _SectionMostReadState extends State<SectionMostRead> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 text,
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Theme.of(context).textTheme.bodyMedium!.color),
               ),
             ),
           ),

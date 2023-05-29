@@ -20,6 +20,16 @@ class _NavBarState extends State<NavBar> {
     await prefs.setBool('theme', mode);
   }
 
+  toggleTheme(theme) {
+    if (theme.getTheme() == ThemeMode.dark) {
+      theme.setTheme(ThemeMode.light);
+      setThemeMode(false);
+    } else {
+      theme.setTheme(ThemeMode.dark);
+      setThemeMode(true);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout.builder(
@@ -29,16 +39,31 @@ class _NavBarState extends State<NavBar> {
   }
 
   Widget mobileNavBar() {
+    final theme = Provider.of<ThemeChanger>(context);
     return Container(
       height: 70,
-      decoration: BoxDecoration(color: ),
+      decoration: BoxDecoration(color: Theme.of(context).primaryColor),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             navLogo(),
-            const Icon(Icons.menu),
+            GestureDetector(
+              onTap: () {
+                toggleTheme(theme);
+              },
+              child: const Icon(Icons.brightness_4_rounded),
+            ),
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MobileNavPage(),
+                      ));
+                },
+                child: const Icon(Icons.menu)),
           ],
         ),
       ),
@@ -48,7 +73,7 @@ class _NavBarState extends State<NavBar> {
   Widget desktopNavBar() {
     final theme = Provider.of<ThemeChanger>(context);
     return Container(
-      decoration: BoxDecoration(color: AppColors.cards),
+      decoration: BoxDecoration(color: Theme.of(context).primaryColor),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
@@ -59,13 +84,7 @@ class _NavBarState extends State<NavBar> {
                 navLogo(),
                 GestureDetector(
                   onTap: () {
-                    if (theme.getTheme() == ThemeMode.dark) {
-                      theme.setTheme(ThemeMode.light);
-                      setThemeMode(false);
-                    } else {
-                      theme.setTheme(ThemeMode.dark);
-                      setThemeMode(true);
-                    }
+                    toggleTheme(theme);
                   },
                   child: const Icon(Icons.brightness_4_rounded),
                 ),
@@ -73,16 +92,16 @@ class _NavBarState extends State<NavBar> {
             ),
             Row(
               children: [
-                navButton("Features"),
-                navButton("India"),
-                navButton("World"),
-                navButton("Politics"),
-                navButton("Climate"),
-                navButton("Science & Tech"),
-                navButton("Business"),
-                navButton("Ents & Arts"),
-                navButton("Travel"),
-                navButton("More"),
+                navButton(context, "Features"),
+                navButton(context, "India"),
+                navButton(context, "World"),
+                navButton(context, "Politics"),
+                navButton(context, "Climate"),
+                navButton(context, "Science & Tech"),
+                navButton(context, "Business"),
+                navButton(context, "Ents & Arts"),
+                navButton(context, "Travel"),
+                navButton(context, "More"),
               ],
             )
           ],
@@ -103,10 +122,10 @@ class _NavBarState extends State<NavBar> {
             navLogo(),
             Row(
               children: [
-                navButton("Features"),
-                navButton("About Us"),
-                navButton("Pricing"),
-                navButton("Feedback"),
+                navButton(context, "Features"),
+                navButton(context, "About Us"),
+                navButton(context, "Pricing"),
+                navButton(context, "Feedback"),
               ],
             ),
             SizedBox(
@@ -136,17 +155,88 @@ class _NavBarState extends State<NavBar> {
     );
   }
 
-  Widget navButton(String text) {
-    return Container(
-      child: TextButton(
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
+  Widget navButton(BuildContext context, String text) {
+    return TextButton(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return Colors.green;
+          }
+          return Colors.purpleAccent;
+        }),
+      ),
+      onPressed: () {},
+      child: Text(
+        text,
+        style: TextStyle(
+          color: Theme.of(context).textTheme.bodyMedium!.color,
+          fontSize: 18,
+        ),
+      ),
+    );
+  }
+}
+
+class MobileNavPage extends StatelessWidget {
+  const MobileNavPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.close,
+                    color: Theme.of(context).textTheme.bodyMedium!.color,
+                  ),
+                ),
+              ),
+              navItems("Home"),
+              myDivider(),
+              navItems("India"),
+              myDivider(),
+              navItems("World"),
+              myDivider(),
+              navItems("Politics"),
+              myDivider(),
+              navItems("Climate"),
+              myDivider(),
+              navItems("Science & Tech"),
+              myDivider(),
+              navItems("Business"),
+              myDivider(),
+            ],
           ),
         ),
-        onPressed: () {},
+      ),
+    );
+  }
+
+  Divider myDivider() {
+    return const Divider(
+      thickness: 1,
+      color: Colors.grey,
+    );
+  }
+
+  Widget navItems(text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 18.0),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 20),
       ),
     );
   }

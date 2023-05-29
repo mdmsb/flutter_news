@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/utils/providers.dart';
-import 'package:provider/provider.dart';
 
 class AppColors {
   static Color background = const Color.fromARGB(255, 17, 17, 17);
@@ -18,17 +16,35 @@ class MyColors {
 
 ThemeData myLightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
-  primaryColor: Colors.amber,
+  primaryColor: Colors.brown[100],
+  textTheme: const TextTheme(
+    bodyMedium: TextStyle(
+      color: Colors.black,
+    ),
+  ),
+  cardTheme: CardTheme(
+    color: Colors.grey[200],
+  ),
 );
 ThemeData myDarkTheme = ThemeData(
   scaffoldBackgroundColor: MyColors.dark1,
   primaryColor: MyColors.dark2,
+  textTheme: const TextTheme(
+    bodyMedium: TextStyle(
+      color: Colors.white,
+    ),
+  ),
+  cardTheme: CardTheme(
+    color: MyColors.dark2,
+  ),
 );
 
-primaryColor(context) {
-  if (Provider.of<ThemeChanger>(context).getTheme() == ThemeMode.light) {
-    return myLightTheme.primaryColor;
-  } else {
-    return myDarkTheme.primaryColor;
-  }
-}
+myTextColor(context) => Theme.of(context).textTheme.bodyMedium!.color;
+
+// primaryColor(context) {
+//   if (Provider.of<ThemeChanger>(context).getTheme() == ThemeMode.light) {
+//     return myLightTheme.primaryColor;
+//   } else {
+//     return myDarkTheme.primaryColor;
+//   }
+// }

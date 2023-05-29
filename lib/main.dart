@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         theme: myLightTheme,
         darkTheme: myDarkTheme,
         themeMode: Provider.of<ThemeChanger>(context).getTheme(),
+        // home: const Home(),
         home: const Home(),
       );
     });

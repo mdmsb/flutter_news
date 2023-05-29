@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/utils/colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import 'card_image_box.dart';
@@ -40,15 +39,15 @@ class _CardMainState extends State<CardMain> {
           });
         }
       },
-      child: Container(
-        decoration: BoxDecoration(color: AppColors.cards),
+      child: Card(
+        // decoration: BoxDecoration(color: AppColors.cards),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Column(
             children: [
               imageBox(_scaleImage),
               SizedBox(
-                child: textBox(20),
+                child: textBox(20, context),
               )
             ],
           ),
@@ -71,8 +70,8 @@ class _CardMainState extends State<CardMain> {
           });
         }
       },
-      child: Container(
-        decoration: BoxDecoration(color: AppColors.cards),
+      child: Card(
+        // decoration: BoxDecoration(color: AppColors.cards),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Row(
@@ -85,7 +84,7 @@ class _CardMainState extends State<CardMain> {
                 flex: 4,
                 child: SizedBox(
                   height: 300,
-                  child: textBox(22),
+                  child: textBox(22, context),
                 ),
               ),
             ],
